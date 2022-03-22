@@ -4,11 +4,47 @@ import kotlin.math.pow
 // Очередь с приоритетами
 
 fun main() {
-    val n = readLine()!!.toInt()
-    var str: String     // строка ввода (Insert x или  ExtractMax)
-    var oper: String    // операция
-    var x: Long         // число в очередь
+    val n = readLine()!!.toInt()     // количество операций
+        var str: String     // строка ввода (Insert x или  ExtractMax)
+        var listZn = mutableListOf<Long>()  // очередь
+        var index: Int
+        var y: Long
 
+        for (i in 1..n) {
+            str = readLine().toString()
+            if (str == "ExtractMax") {
+                listZn.sort()
+                println(listZn[listZn.lastIndex])
+                listZn.removeAt(listZn.lastIndex)
+            } else {
+                listZn.add(str.substringAfter(" ").toLong())
+            }
+        }
+
+        fun insert (num: Long) {
+            listZn.add(num)
+            if (listZn.size > 1) {
+                index = listZn.lastIndex
+                while (listZn[index] > listZn[index/2]) {
+                    y = listZn[index]
+                    listZn[index] = listZn[index/2]
+                    listZn[index/2] = y
+                    index = index/2
+                }
+            }
+        }
+
+        fun extractMax () {
+            println(listZn[0])
+            listZn[0] = listZn[listZn.lastIndex]
+            listZn.removeAt(listZn.lastIndex)
+            if (listZn.size > 0) {
+                index = 1
+                while (listZn[index-1] < listZn[(index*2)-1] || listZn[index-1] < listZn[index*2]) {
+                    
+                }
+            }
+        }
 }
 
 
