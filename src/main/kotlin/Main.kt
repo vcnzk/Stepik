@@ -5,48 +5,57 @@ import kotlin.math.pow
 
 fun main() {
     val n = readLine()!!.toInt()     // количество операций
-        var str: String     // строка ввода (Insert x или  ExtractMax)
-        var listZn = mutableListOf<Long>()  // очередь
-        var index: Int
-        var y: Long
+    var str: String     // строка ввода (Insert x или  ExtractMax)
+    var listZn = mutableListOf<Long>()  // очередь
+    var index: Int
+    var indexMin:Int
+    var y: Long
 
-        for (i in 1..n) {
-            str = readLine().toString()
-            if (str == "ExtractMax") {
-                listZn.sort()
-                println(listZn[listZn.lastIndex])
-                listZn.removeAt(listZn.lastIndex)
-            } else {
-                listZn.add(str.substringAfter(" ").toLong())
-            }
-        }
+    for (i in 1..n) {
+        str = readLine().toString()
 
-        fun insert (num: Long) {
-            listZn.add(num)
-            if (listZn.size > 1) {
-                index = listZn.lastIndex
-                while (listZn[index] > listZn[index/2]) {
-                    y = listZn[index]
-                    listZn[index] = listZn[index/2]
-                    listZn[index/2] = y
-                    index = index/2
-                }
-            }
-        }
-
-        fun extractMax () {
+        if (str == "ExtractMax") {
             println(listZn[0])
             listZn[0] = listZn[listZn.lastIndex]
             listZn.removeAt(listZn.lastIndex)
-            if (listZn.size > 0) {
-                index = 1
-                while (listZn[index-1] < listZn[(index*2)-1] || listZn[index-1] < listZn[index*2]) {
-                    
+
+            if (listZn.size > 1) {
+                    index = 0
+                    while ( (listZn.lastIndex > (index * 2)) && (listZn[index] < listZn[(index * 2) + 1])
+                        || (listZn.lastIndex > (index * 2) + 1) && (listZn[index] < listZn[(index * 2) + 2]) )
+                        {
+                            y = listZn[index]
+
+                            if (listZn.lastIndex > (index * 2) + 1) {
+                                if (listZn[(index * 2) + 1] > listZn[(index * 2) + 2]) {
+                                    indexMin = (index * 2) + 1
+                                } else indexMin = (index * 2) + 2
+                            } else {
+                                indexMin = (index * 2) + 1
+                            }
+
+                            listZn[index] = listZn[indexMin]
+                            listZn[indexMin] = y
+                            index = indexMin
+                    }
+                }
+
+        } else {
+
+            listZn.add(str.substringAfter(" ").toLong())
+
+            if (listZn.size > 1) {
+                index = listZn.lastIndex
+                while (listZn[index] > listZn[(index - 1) / 2]) {
+                    y = listZn[index]
+                    listZn[index] = listZn[(index - 1) / 2]
+                    listZn[(index - 1) / 2] = y
+                    index = (index - 1) / 2
                 }
             }
         }
+    }
 }
-
 
 
 
