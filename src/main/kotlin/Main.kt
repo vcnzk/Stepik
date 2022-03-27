@@ -1,33 +1,40 @@
-import kotlin.math.pow
-
 // stepik 6.1
 fun main() {
     var str1 = readLine().toString()
     var str2 = readLine().toString()
 
-    var n = str1.substringBefore(" ").toInt()
-    val nn = mutableListOf<Int>()
-    var k = str2.substringBefore(" ").toInt()
-    val kk = mutableListOf<Int>()
-    println(n)
-    println(k)
+    val nn = str1.split(" ")
+    val kk = str2.split(" ")
+    val result = mutableListOf<Int>()
 
-    for (i in 1..n) {
-        str1 = str1.drop(2)
-        if (i < n) nn.add(str1.substringBefore(" ").toInt())
-        else nn.add(str1.substringAfter(" ").toInt())
+    var x: Int
+    var l: Int
+    var r: Int
+
+    for (i in 1..kk.size-1) {
+        r = nn.size-1
+        l = 1
+        x = -1
+        while (r >= l) {
+            if (nn[(r+l)/2] == kk[i]) {
+                x = (r + l) / 2
+                break
+            } else {
+                if ((nn[(r + l)/2]).toLong() < kk[i].toLong()) {
+                    l = ((r + l) / 2) + 1
+                } else {
+                    r = ((r + l) / 2) - 1
+                }
+            }
+        }
+        result.add(x)
     }
-
-    for (j in 1..4) {
-        println(str2)
-//        str2 = str2.dropWhile { " " }
-        if (j < k) kk.add(str2.substringBefore(" ").toInt())
-        else kk.add(str2.toInt())
-        println(str2)
-
-    }
+    for (i in result) print("$i ")
 }
-
+/*
+5 1 5 8 12 13
+5 8 1 23 1 11
+* */
 
 // stepik 4.3
 // Очередь с приоритетами
