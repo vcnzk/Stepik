@@ -16,8 +16,45 @@
 * */
 
 fun main() {
-	val n:Int
-	
+	var n: Int = readLine().toString().toInt()
+	val str = readLine().toString().split(" ")
+	val kk = mutableListOf<Long>()
+	val nn = mutableListOf<Long>()
+	var x = 1
+	var i = 0
+	var j = 0
+	var d = 1
+	var y = 0
+
+	for (i in 0 .. str.lastIndex) {
+		nn.add(str[i].toLong())
+	}
+
+	n = 0
+	while (d <= nn.size) {
+
+		x = y + d
+			while (x < nn.lastIndex && x < d) {
+				i = x
+				j = i + d
+				if (nn[d * x + i] <= nn[d * x + j]) {
+					kk.add(nn[d * x + i])
+					i += 1
+				} else {
+					kk.add(nn[d * x + j])
+					n += d - j
+					j += 1
+				}
+				x += 1
+
+			}
+
+
+		y += d
+		d *= 2
+	}
+
+	println(n)
 }
 
 
