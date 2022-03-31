@@ -19,39 +19,52 @@ fun main() {
 	var n: Int = readLine().toString().toInt()
 	val str = readLine().toString().split(" ")
 	val kk = mutableListOf<Long>()
-	val nn = mutableListOf<Long>()
-	var x = 1
-	var i = 0
-	var j = 0
-	var d = 1
-	var y = 0
+	var nn = mutableListOf<Long>()
+	var x: Int	// начало текущей пары массивов
+	var i: Int	// текущий индекс 1го массива
+	var j: Int	// текущий индекс 2го массива
+	var d = 1	// шаг, длина сравниваемых массивов
+	n = 0		// счетчик инверсий
 
 	for (i in 0 .. str.lastIndex) {
+		// Преобразуем стринг в массив Лонг
 		nn.add(str[i].toLong())
 	}
 
-	n = 0
-	while (d <= nn.size) {
+	while (d < nn.size) {
+		x = 0
 
-		x = y + d
-			while (x < nn.lastIndex && x < d) {
+			while (x < nn.lastIndex) {
 				i = x
 				j = i + d
-				if (nn[d * x + i] <= nn[d * x + j]) {
-					kk.add(nn[d * x + i])
-					i += 1
-				} else {
-					kk.add(nn[d * x + j])
-					n += d - j
-					j += 1
+
+				while (i < x + d || j < x + (2 * d)) {
+
+					println("d=$d, x=$x, [$i]=${nn[i]}, [$j]=${nn[j]}")
+
+					if (i < x + d && j < x + (2 * d)) {
+						if (nn[i] <= nn[j]) {
+							kk.add(nn[i])
+							i += 1
+						} else {
+							kk.add(nn[j])
+							n += 1 // подставить формулу
+							j += 1
+						}
+					} else {
+
+					}
+					println(kk)
+					break
+
 				}
-				x += 1
+				x += 2 * d
 
 			}
-
-
-		y += d
+		nn = kk
+		kk.clear()
 		d *= 2
+
 	}
 
 	println(n)
