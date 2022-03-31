@@ -17,57 +17,63 @@
 
 fun main() {
 	var n: Int = readLine().toString().toInt()
-	val str = readLine().toString().split(" ")
-	val kk = mutableListOf<Long>()
-	var nn = mutableListOf<Long>()
-	var x: Int	// начало текущей пары массивов
-	var i: Int	// текущий индекс 1го массива
-	var j: Int	// текущий индекс 2го массива
-	var d = 1	// шаг, длина сравниваемых массивов
-	n = 0		// счетчик инверсий
+        val str = readLine().toString().split(" ")
+        val kk = mutableListOf<Long>()
+        var nn = mutableListOf<Long>()
+        var x: Int	// начало текущей пары массивов
+        var i: Int	// текущий индекс 1го массива
+        var j: Int	// текущий индекс 2го массива
+        var d = 1	// шаг, длина сравниваемых массивов
+        n = 0		// счетчик инверсий
 
-	for (i in 0 .. str.lastIndex) {
-		// Преобразуем стринг в массив Лонг
-		nn.add(str[i].toLong())
-	}
+        for (i in 0 .. str.lastIndex) {
+            // Преобразуем стринг в массив Лонг
+            nn.add(str[i].toLong())
+        }
 
-	while (d < nn.size) {
-		x = 0
+        while (d < nn.size) {
+            x = 0
 
-			while (x < nn.lastIndex) {
-				i = x
-				j = i + d
+            while (x < nn.lastIndex) {
+                i = x
+                j = i + d
 
-				while (i < x + d || j < x + (2 * d)) {
+                while (i < x + d || j < x + (2 * d)) {
 
-					println("d=$d, x=$x, [$i]=${nn[i]}, [$j]=${nn[j]}")
+                    //println("d=$d, x=$x, [$i]=${nn[i]}, [$j]=${nn[j]}")
 
-					if (i < x + d && j < x + (2 * d)) {
-						if (nn[i] <= nn[j]) {
-							kk.add(nn[i])
-							i += 1
-						} else {
-							kk.add(nn[j])
-							n += 1 // подставить формулу
-							j += 1
-						}
-					} else {
+                    if (i < x + d && j < x + (2 * d)) {
+                        if (nn[i] <= nn[j]) {
+                            kk.add(nn[i])
+                            i += 1
+                        } else {
+                            kk.add(nn[j])
+                            n += j - i // подставить формулу
+                            j += 1
+                        }
+                    } else {
+                        if (i >= x + d) {
+                            kk.add(nn[j])
+                            n += j - i // подставить формулу
+                            j += 1
+                        } else {
+                            kk.add(nn[i])
+                            i += 1
+                        }
+                    }
+                    println("kk=$kk")
 
-					}
-					println(kk)
-					break
+                }
+                x += 2 * d
 
-				}
-				x += 2 * d
+            }
+            nn = kk
+            kk.clear()
+            d *= 2
 
-			}
-		nn = kk
-		kk.clear()
-		d *= 2
+        }
 
-	}
-
-	println(n)
+        println(n)
 }
 
 
