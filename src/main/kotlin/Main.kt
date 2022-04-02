@@ -14,7 +14,7 @@
 
 
 * */
-
+/*
 fun main() {
 	var n: Int = readLine().toString().toInt()
         val str = readLine().toString().split(" ")
@@ -72,7 +72,7 @@ fun main() {
         d *= 2
     }
     println(n)
-}
+}*/
 /*
 1
 1 2 3
