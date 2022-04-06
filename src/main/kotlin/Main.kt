@@ -1,19 +1,196 @@
+import kotlin.random.Random
+
+// stepik 6.5
+
+fun main() {
+    var str = readLine().toString()
+    var n = str.substringBefore(" ").toInt()    // кол. отрезков
+    var start = mutableListOf<Long>()           // начала отрезков
+    val end = mutableListOf<Long>()             // концы отрезков
+    var points = mutableListOf<Long>()          // координаты точек
+    val pointsFreq = mutableListOf<Long>()      // количество отрезков, которым принадлежат точки
+
+    for (i in 0 until n) {              // заполняем список начал и концов
+        str = readLine().toString()
+        start.add(str.substringBefore(" ").toLong())
+        end.add(str.substringAfter(" ").toLong())
+    }
+
+    val str2 = readLine().toString().split(" ")
+    for (item in 0..str2.lastIndex) {       // заполняем список координат точек
+        points.add(str2[item].toLong())
+    }
+
+    val treeIndex = mutableListOf<Int>()    // Список для хранения границ списков для сортировки
+    var x: Long     // элемент списка для сравнения
+    var l = 0       // начало списка
+    var r = 0       // конец списка
+    var i = 0       // указатель сортируемого индекса
+    var j = 0       // указатель последнего элемента меньшего Х
+    var lx = 0      // указатель первого элемента, равного Х
+    var rx = 0      // указатель последнего элемента, равного Х
+
+    //////////////////////////////////////
+    // быстрая сортировка
+    fun listSort (list1: MutableList<Long>) {
+        var xIndex = (l .. r).random()  // точка отсчета, относительно него сортируем
+
+        var x = list1[xIndex]
+        list1[xIndex] = list1[l]
+        list1[l] = x
+
+        for (i in l + 1 .. r) {
+            if (list1[i] <= list1[l]) {
+                j ++
+                x = list1[i]
+                list1[i] = list1[j]
+                list1[j] = x
+            }
+        }
+        x = list1[l]
+        list1[l] = list1[j]
+        list1[j] = x
+    }
+
+    ///////////////////////////////////////////////
+    //сортировка старта по возрастанию
+
+
+    println("start=$start")
+    println("end=$end")
+
+    /////////////////////////////////////
+    // Просто подсчет
+    for (item in points) {
+        var l = 0
+        var r = start.lastIndex
+        var m: Int
+        while (r >= l) {
+            m = (r + l) / 2
+            if (start[m] <= item) {
+                l = m + 1
+            }  else {
+                r = m - 1
+            }
+        }
+        i = l - 1
+        l = 0
+        r = end.lastIndex
+        while (r >= l) {
+            m = (r + l) / 2
+            if (end[m] >= item) {
+                r = m - 1
+            }  else {
+                l = m + 1
+            }
+        }
+        pointsFreq.add(i.toLong() - r)
+    }
+    /////////////////////////////////////
+    println("pointsFreq=$pointsFreq")
+
+    for (i in pointsFreq) {
+        print("$i ")
+    }
+}
+
+/*
+2 3
+0 5
+7 10
+1 6 11
+Sample Output:
+1 0 0
+
+5 0
+1 12
+3 4
+5 6
+2 5
+9 10
+1 2 7 11
+---
+1 2 1 1
+
+5 0
+1 2
+3 4
+5 6
+2 5
+9 10
+1 2 7 11
+---
+1 2 0 0
+
+6 9
+0 0
+-1 1
+-2 2
+-3 3
+-4 4
+-5 5
+-5 -4 -3 -1 0 1 3 4 5
+---
+1 2 3 5 6 5 3 2 1
+
+2 2
+1 2
+2 2
+1 2
+---
+1 2
+
+6 6
+2 3
+2 5
+3 5
+2 7
+5 7
+3 7
+1 2 3 5 6 7
+---
+0 3 5 5 3 3
+
+7 6
+6 6
+2 3
+2 5
+3 5
+2 7
+5 7
+3 7
+1 2 3 5 6 7
+---
+0 3 5 5 4 3
+
+10 5
+-2 3
+0 3
+-1 0
+-1 3
+0 1
+-2 -1
+1 3
+2 3
+1 2
+2 3
+-3 -1 0 2 3
+----
+0 4 5 7 6
+
+6 6
+0 3
+1 3
+2 3
+3 4
+3 5
+3 6
+1 2 3 4 5 6
+---
+2 3 6 3 2 1
+*/
 
 // stepik 6.4
-/*
-* Первая строка содержит число n до 10^5, вторая — массив A[1..n], содержащий натуральные числа, не превосходящие 10^9.
-* Необходимо посчитать число пар индексов 1≤i<j≤n, для которых A[i]>A[j].
-* (Такая пара элементов называется инверсией массива. Количество инверсий в массиве является в некотором смысле
-* его мерой неупорядоченности: например, в упорядоченном по неубыванию массиве инверсий нет вообще,
-* а в массиве, упорядоченном по убыванию, инверсию образуют каждые два элемента.)
-
-5
-2 3 9 2 9
-
-2
-
-
-* */
 /*
 fun main() {
 	var n: Int = readLine().toString().toInt()
