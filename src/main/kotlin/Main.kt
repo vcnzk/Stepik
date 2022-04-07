@@ -1,4 +1,3 @@
-import kotlin.random.Random
 
 // stepik 6.5
 
