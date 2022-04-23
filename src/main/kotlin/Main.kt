@@ -13,11 +13,6 @@
 -----
 2 2 3 9 9
 
-6
-2 1 2 3 7 7
------
-1 2 2 3 7 7
-
 fun main() {
     val n = readLine()?.toInt()
     val str = readLine()!!.split(" ").map { it.toInt() }
