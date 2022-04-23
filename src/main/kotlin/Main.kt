@@ -1,4 +1,51 @@
 
+
+
+
+///////////////////////////////
+// stepik 6.8
+// Первая строка содержит число n 1≤n≤10^4, вторая — n натуральных чисел, не превышающих 10.
+// Выведите упорядоченную по неубыванию последовательность этих чисел.
+//////////////////
+/*
+5
+2 3 9 2 9
+-----
+2 2 3 9 9
+
+6
+2 1 2 3 7 7
+-----
+1 2 2 3 7 7
+
+fun main() {
+    val n = readLine()?.toInt()
+    val str = readLine()!!.split(" ").map { it.toInt() }
+    val numberList = MutableList(11) { 0 }
+    var k = 0
+
+    for (item in str) {
+        numberList[item] += 1
+    }
+    for (item in 1 .. numberList.lastIndex) {
+        if (numberList[item] != 0) {
+            numberList[item] += numberList[k]
+            k = item
+        }
+    }
+    val result = MutableList(n!!) { 0 }
+    for (i in str.lastIndex downTo 0) {
+        numberList[str[i]] -= 1
+        result[numberList[str[i]]] = str[i]
+    }
+    for (j in result) {
+        print("$j ")
+    }
+}
+*/
+
+
+/*
 // stepik 6.5
 
 fun main() {
@@ -684,3 +731,5 @@ fun main() {
 //    }
 //    println(max(a,b))
 //}
+*/
+/**/
