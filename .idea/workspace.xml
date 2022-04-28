@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97ef6df7-fe26-43c8-8333-1b6bc6d7d822" name="Changes" comment="stepik 6.5_10">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_04_2022_08_20_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_04_2022_08_20__Changes_.xml" beforeDir="false" />
+    <list default="true" id="97ef6df7-fe26-43c8-8333-1b6bc6d7d822" name="Changes" comment="stepik 6.8">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_04_2022_8_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_04_2022_8_47__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2022_17_15_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2022_17_15__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
@@ -191,7 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649300856006</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="stepik 6.5_10">
+      <created>1650733943176</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650733943176</updated>
+    </task>
+    <task id="LOCAL-00014" summary="stepik 6.8">
+      <created>1650733979048</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1650733979048</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,6 +260,7 @@
     <MESSAGE value="stepik 6.5_2" />
     <MESSAGE value="stepik 6.5_3" />
     <MESSAGE value="stepik 6.5_10" />
-    <option name="LAST_COMMIT_MESSAGE" value="stepik 6.5_10" />
+    <MESSAGE value="stepik 6.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="stepik 6.8" />
   </component>
 </project>

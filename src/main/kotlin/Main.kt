@@ -1,7 +1,94 @@
+// stepik 8.2 / 5
+fun main() {
+    val n = readLine()!!.toInt()    // количество исходных чисел
+    val aa = readLine()!!.split(" ").map { it.toInt() }     // исходная последовательность
+    val kk = mutableListOf<Int>()       // список длинн подпоследовательностей
+    var temp = mutableListOf<Int>()
+
+    for (i in aa.indices) {
+        kk.add(1)
+        temp.add(0)
+        for (j in 0 until  i) {
+            if (aa[i] % aa[j] == 0) {
+                temp.add(kk[j])
+            }
+        }
+        kk[i] = (temp.maxOrNull()!!+1)
+        temp.clear()
+    }
+    println(kk.maxOrNull())
+}
 
 
+/*import kotlin.math.log
+import kotlin.math.log2
+import kotlin.math.pow
+import kotlin.math.sqrt
+
+fun main() {
+    val result = mutableListOf<Double>()
+    val n: Double = readLine()!!.toDouble()
+    val formula = mutableListOf<String>()
+
+    result.add(2.0.pow(3 * n))                      // 0
+    result.add(2.0.pow(n))                              // 1
+    result.add(n.pow(2))                            // 2
+    result.add(3.0.pow(log2(n)))                        // 3
+    result.add(factorial(n.toLong()).toDouble())        // 4
+    result.add(n / log(n, 5.0))                 // 5
+    result.add(factlog(n)) // 6
+    result.add(4.0.pow(n))                              // 7
+    result.add(sqrt(n))                 // 8
+    result.add(n.pow(sqrt(n)))          // 9
+    result.add(log2(n).pow(2))      // 10
+    result.add(log2(log2(n)))
+    result.add(log2(n).pow(log2(n)))   // 12
+    result.add(7.0.pow(log2(n)))
+    result.add(log(n, 3.0))       // 14
+    result.add(n.pow(log2(n)))
+    result.add(sqrt(log(n, 4.0)))  //16
+    result.add(2.0.pow(2.0.pow(n)))
+
+    formula.add("2.0.pow(3 * n)")
+    formula.add("2.0.pow(n)")
+    formula.add("n.pow(2)")
+    formula.add("3.0.pow(log2(n))")
+    formula.add("factorial(n.toLong()).toDouble()")
+    formula.add("n / log(n, 5.0)")
+    formula.add("log2(factorial(n.toLong()).toDouble())")
+    formula.add("4.0.pow(n)")
+    formula.add("sqrt(n)")
+    formula.add("n.pow(sqrt(n))")
+    formula.add("log2(n).pow(2)")
+    formula.add("log2(log2(n))")
+    formula.add("log2(n).pow(log2(n))")
+    formula.add("7.0.pow(log2(n))")
+    formula.add("log(n, 3.0)")
+    formula.add("n.pow(log2(n))")
+    formula.add("sqrt(log(n, 4.0))")
+    formula.add("2.0.pow(2.0.pow(n))")
 
 
+    for (i in 0 .. result.lastIndex) {
+        print("$i   ")
+        println(result[i])
+    }
+}
+fun factorial(k: Long): Long {
+    var result: Long = 1
+    for (i in 1 .. k) {
+        result = result * i
+    }
+    return result
+}
+fun factlog(k: Double): Double {
+    var result: Double = 0.0
+    for (i in 1 .. k.toLong()) {
+        result = result + log2(i.toDouble())
+    }
+    return result
+}
+*/
 ///////////////////////////////
 // stepik 6.8
 // Первая строка содержит число n 1≤n≤10^4, вторая — n натуральных чисел, не превышающих 10.
