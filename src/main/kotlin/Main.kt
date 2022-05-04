@@ -1,3 +1,39 @@
+// stepik 8.2 / 6
+fun main() {        // вывести длину и индексы максимальной невозрастающей последовательности
+    val n = readLine()
+    val aa = readLine()!!.split(" ").map { it.toInt() }
+    var k: Int      // длина искомой последовательности
+    val kk = mutableListOf<Int>() // Длины подпоследовательностей
+    val temp = mutableListOf<Int>()
+
+    for (i in aa.indices) {
+        kk.add(1)
+        temp.add(0)
+        for (j in 0 until  i) {
+            if (aa[i] <= aa[j]) {
+                temp.add(kk[j])
+            }
+        }
+        kk[i] = (temp.maxOrNull()!!+1)
+        temp.clear()
+    }
+    println(kk.maxOrNull())
+//    println(kk)
+
+    val x = kk.indexOf(kk.maxOrNull())
+    temp.add(x)
+    for (i in (x - 1) downTo 0) {
+        if (i != x && kk[i] == kk[i+1] - 1 && aa[i] >= aa[i+1]) {
+            temp.add(i)
+        }
+    }
+
+    for (j in temp.lastIndex downTo 0) {
+        print("${temp[j]+1} ")
+    }
+}
+
+/*
 // stepik 8.2 / 5
 fun main() {
     val n = readLine()!!.toInt()    // количество исходных чисел
@@ -18,7 +54,7 @@ fun main() {
     }
     println(kk.maxOrNull())
 }
-
+*/
 
 /*import kotlin.math.log
 import kotlin.math.log2
