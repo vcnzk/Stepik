@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97ef6df7-fe26-43c8-8333-1b6bc6d7d822" name="Changes" comment="stepik 6.8">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_04_2022_8_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_04_2022_8_47__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2022_17_15_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2022_17_15__Changes_.xml" beforeDir="false" />
+    <list default="true" id="97ef6df7-fe26-43c8-8333-1b6bc6d7d822" name="Changes" comment="stepik 8.2 /5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
@@ -206,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650733979048</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="stepik 8.2 /5">
+      <created>1651116070868</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1651116070868</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,6 +265,14 @@
     <MESSAGE value="stepik 6.5_3" />
     <MESSAGE value="stepik 6.5_10" />
     <MESSAGE value="stepik 6.8" />
-    <option name="LAST_COMMIT_MESSAGE" value="stepik 6.8" />
+    <MESSAGE value="stepik 8.2 /5" />
+    <option name="LAST_COMMIT_MESSAGE" value="stepik 8.2 /5" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JetRunConfigurationType">
+        <watch expression="i" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

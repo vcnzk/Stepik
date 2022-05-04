@@ -1,10 +1,37 @@
+// stepic 8.3
+fun main() {        // Расстояние редактирования
+    val str1 = readLine().toString()
+    val str2 = readLine().toString()
+    val distance: MutableList<MutableList<Int>> = mutableListOf(mutableListOf(0))
+
+    for (i in 1 .. str1.length) {
+        distance.add(mutableListOf())
+        distance[i].add(i)
+        for (j in 1 .. str2.length) {
+            distance[i].add(0)
+        }
+    }
+
+    for (j in 1 .. str2.length) {
+        distance[0].add(j)
+    }
+
+    for (i in 1 .. str1.length) {
+        for (j in 1 .. str2.length) {
+            val c = if (str1[i-1] == str2[j-1]) 0 else 1
+            distance[i][j] = minOf(distance[i - 1][j] + 1, distance[i][j - 1] + 1, distance[i - 1][j - 1] + c)
+        }
+    }
+    println(distance[distance.lastIndex][distance[0].lastIndex])
+}
+
 // stepik 8.2 / 6
+/*
 fun main() {        // вывести длину и индексы максимальной невозрастающей последовательности
     val n = readLine()
-    val aa = readLine()!!.split(" ").map { it.toInt() }
-    var k: Int      // длина искомой последовательности
-    val kk = mutableListOf<Int>() // Длины подпоследовательностей
-    val temp = mutableListOf<Int>()
+    val aa = readLine()!!.split(" ").map { it.toLong() }
+    val kk = mutableListOf<Long>() // Длины подпоследовательностей
+    val temp = mutableListOf<Long>()
 
     for (i in aa.indices) {
         kk.add(1)
@@ -17,24 +44,23 @@ fun main() {        // вывести длину и индексы максим�
         kk[i] = (temp.maxOrNull()!!+1)
         temp.clear()
     }
-    println(kk.maxOrNull())
-//    println(kk)
-
-    val x = kk.indexOf(kk.maxOrNull())
+    val x = kk.indexOf(kk.maxOrNull()).toLong()
     temp.add(x)
     for (i in (x - 1) downTo 0) {
-        if (i != x && kk[i] == kk[i+1] - 1 && aa[i] >= aa[i+1]) {
+        if (i != x && (kk[i.toInt()] +1 == kk[temp[temp.lastIndex].toInt()]) && (aa[i.toInt()] >= aa[temp[temp.lastIndex].toInt()])) {
             temp.add(i)
         }
     }
+    println(temp.size)
 
     for (j in temp.lastIndex downTo 0) {
         print("${temp[j]+1} ")
     }
 }
+*/
 
-/*
 // stepik 8.2 / 5
+/*
 fun main() {
     val n = readLine()!!.toInt()    // количество исходных чисел
     val aa = readLine()!!.split(" ").map { it.toInt() }     // исходная последовательность
