@@ -1,4 +1,41 @@
+import java.lang.Integer.sum
+
+// stepik 8.4 Рюкзак, предметы целые и без повторений.
+fun output(list: MutableList<MutableList<Int>>){
+    println("backPack:")
+    for (item in 0..list.lastIndex) {
+        println(list[item])
+    }
+}
+fun main() {
+
+    var weightBackPack = readLine()!!.substringBefore(" ").toInt()  // вместимость рюкзака
+    var weightGold: MutableList<Int> = readLine()!!.split(" ").map { it.toInt() }.toMutableList()   // веса слитков
+    weightGold.add(0,0)
+    val backPack = mutableListOf(mutableListOf(0))
+
+
+    for (i in 1..weightGold.lastIndex) backPack[0].add(0)
+
+    for (w in 1..weightBackPack) {
+        backPack.add(mutableListOf(0))
+        for (n in 1..weightGold.lastIndex) {
+            backPack[w].add(0)
+        }
+    }
+
+    for (w in 1..weightBackPack) {
+        for (n in 1..weightGold.lastIndex) {
+            backPack[w][n] = backPack[w][n - 1]
+            if (weightGold[n] <= w) backPack[w][n] = maxOf(backPack[w][n], backPack[w - weightGold[n]][n - 1] + weightGold[n])
+        }
+    }
+    println(backPack[backPack.lastIndex][backPack[backPack.lastIndex].lastIndex])
+}
+
+
 // stepic 8.3
+/*
 fun main() {        // Расстояние редактирования
     val str1 = readLine().toString()
     val str2 = readLine().toString()
@@ -24,6 +61,8 @@ fun main() {        // Расстояние редактирования
     }
     println(distance[distance.lastIndex][distance[0].lastIndex])
 }
+
+ */
 
 // stepik 8.2 / 6
 /*
