@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97ef6df7-fe26-43c8-8333-1b6bc6d7d822" name="Changes" comment="stepik 8.4 not work">
+    <list default="true" id="97ef6df7-fe26-43c8-8333-1b6bc6d7d822" name="Changes" comment="stepik 8.4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
@@ -224,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651684796196</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="stepik 8.4">
+      <created>1651862039014</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1651862039014</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,7 +290,8 @@
     <MESSAGE value="stepik 8.3" />
     <MESSAGE value="stepik 8.3_update" />
     <MESSAGE value="stepik 8.4 not work" />
-    <option name="LAST_COMMIT_MESSAGE" value="stepik 8.4 not work" />
+    <MESSAGE value="stepik 8.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="stepik 8.4" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

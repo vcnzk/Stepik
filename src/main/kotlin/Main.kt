@@ -1,4 +1,54 @@
-import java.lang.Integer.sum
+// stepik 8.7.4  лестница рекурсия
+
+fun main() {
+    readLine()
+    val stairs = readLine()!!.split(" ").map { it.toLong() }.toMutableList()
+    stairs.add(0, 0)
+    var result = mutableListOf<Long?>(null)
+
+    for (item in 1..stairs.lastIndex) result.add(null)
+
+    fun optMax(i: Int): Long? {
+        if (i == 0) return 0
+        if (i == 1) return stairs[1]
+        if (i > 1) {
+            if (result[i - 1] == null) {
+                result[i - 1] = optMax(i - 1)
+            }
+            if (result[i - 2] == null) {
+                result[i - 2] = optMax(i - 2)
+            }
+        }
+        return maxOf(stairs[i] + result[i - 1]!!, stairs[i] + result[i - 2]!!)
+    }
+
+    println(optMax(result.lastIndex))
+}
+
+/*
+// stepik 8.7.4  лестница
+
+
+fun main() {
+    readLine()
+    val stairs = readLine()!!.split(" ").map { it.toLong() }.toMutableList()
+    stairs.add(0, 0)
+    var result = mutableListOf<Long>(0)
+
+    result.add(stairs[1])
+
+    if (stairs.lastIndex > 1) {
+        for (i in 2..stairs.lastIndex) {
+            result.add(0)
+            result[i] = maxOf(result[i - 2] + stairs[i], result[i - 1] + stairs[i])
+        }
+    }
+    println(result[result.lastIndex])
+}
+
+ */
+
+/*import java.lang.Integer.sum
 
 // stepik 8.4 Рюкзак, предметы целые и без повторений.
 fun output(list: MutableList<MutableList<Int>>){
@@ -32,6 +82,8 @@ fun main() {
     }
     println(backPack[backPack.lastIndex][backPack[backPack.lastIndex].lastIndex])
 }
+
+ */
 
 
 // stepic 8.3
