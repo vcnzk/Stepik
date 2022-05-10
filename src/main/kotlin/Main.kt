@@ -1,5 +1,41 @@
-// stepik 8.7.4  лестница рекурсия
+// stepik 8.7.5  калькулятор
+fun main() {
+    val n = readLine()!!.toInt()
+    var a = 1000000
+    var b = 1000000
+    var c = 1000000
 
+    val mapSteps = mutableMapOf(0 to 0)
+    val mapNum = mutableMapOf(0 to 0)
+    val result = mutableListOf<Int>()
+
+    mapSteps[1] = 0
+    mapSteps[1000000] = 1000000
+    mapNum[1] = 1
+
+    for (item in 2..n) {
+        if (item % 3 == 0) a = item / 3
+        if (item % 2 == 0) b = item / 2
+        c = item - 1
+        mapSteps[item] = minOf(mapSteps[a]!!, mapSteps[b]!!, mapSteps[c]!!) + 1
+        mapNum[item] = if (mapSteps[a]!! <= mapSteps[b]!! && mapSteps[a]!! <= mapSteps[c]!!) a else if (mapSteps[b]!! <= mapSteps[c]!!) b else c
+        a = 1000000
+        b = 1000000
+        c = 1000000
+    }
+
+    result.add(n)
+    while (result.last() != 1) {
+        result.add(mapNum[result.last()]!!)
+    }
+
+    println(mapSteps[n])
+    result.reverse()
+    result.forEach { print("$it ") }
+}
+
+// stepik 8.7.4  лестница рекурсия
+/*
 fun main() {
     readLine()
     val stairs = readLine()!!.split(" ").map { it.toLong() }.toMutableList()
@@ -24,6 +60,8 @@ fun main() {
 
     println(optMax(result.lastIndex))
 }
+
+ */
 
 /*
 // stepik 8.7.4  лестница
