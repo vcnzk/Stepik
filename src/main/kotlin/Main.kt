@@ -1,4 +1,5 @@
 // stepik 8.7.5  калькулятор
+/*
 fun main() {
     val n = readLine()!!.toInt()
     var a = 1000000
@@ -33,6 +34,8 @@ fun main() {
     result.reverse()
     result.forEach { print("$it ") }
 }
+
+ */
 
 // stepik 8.7.4  лестница рекурсия
 /*
@@ -154,39 +157,42 @@ fun main() {        // Расстояние редактирования
 
  */
 
-// stepik 8.2 / 6
-/*
+// stepik 8.2 / 6   Failed test #13 of 20. Time limit exceeded
+//http://e-maxx.ru/algo/longest_increasing_subseq_log
 fun main() {        // вывести длину и индексы максимальной невозрастающей последовательности
-    val n = readLine()
-    val aa = readLine()!!.split(" ").map { it.toLong() }
-    val kk = mutableListOf<Long>() // Длины подпоследовательностей
-    val temp = mutableListOf<Long>()
+    readLine()
+    val aa = readLine()!!.split(" ").map { it.toInt() }
+//    val aa = mutableListOf<Int>()
+//    for (i in 1..100000) aa.add(0)
+    val kk = mutableListOf<Int>() // Длины подпоследовательностей
+    val temp = mutableMapOf(0 to 0)
 
     for (i in aa.indices) {
         kk.add(1)
-        temp.add(0)
+        if (i > 0 && aa[i] <= aa[i - 1]) {
+            kk[i] = kk[i - 1] + 1
+            temp[i] = i - 1
+        }
         for (j in 0 until  i) {
-            if (aa[i] <= aa[j]) {
-                temp.add(kk[j])
+            if (aa[i] <= aa[j] && kk[i] <= kk[j]) {
+                kk[i] = kk[j] + 1
+                temp[i] = j
             }
         }
-        kk[i] = (temp.maxOrNull()!!+1)
-        temp.clear()
     }
-    val x = kk.indexOf(kk.maxOrNull()).toLong()
-    temp.add(x)
-    for (i in (x - 1) downTo 0) {
-        if (i != x && (kk[i.toInt()] +1 == kk[temp[temp.lastIndex].toInt()]) && (aa[i.toInt()] >= aa[temp[temp.lastIndex].toInt()])) {
-            temp.add(i)
-        }
-    }
-    println(temp.size)
 
-    for (j in temp.lastIndex downTo 0) {
-        print("${temp[j]+1} ")
+    val x = kk.indexOf(kk.maxOrNull())
+    val y = kk[x]
+    val result = mutableListOf<Int>(x)
+    for (i in 1 until y) {
+        result.add(temp[result.last()]!!)
     }
+
+    println(result.size)
+    result.reverse()
+    result.forEach { print("${it + 1} ") }
 }
-*/
+
 
 // stepik 8.2 / 5
 /*
